@@ -4,7 +4,7 @@ import {
   Route,
 } from "react-router-dom";
 
-import { Create, Home } from './pages';
+import { Create, Home, NotFound } from './pages';
 
 export const App = () => {
   return (
@@ -13,8 +13,11 @@ export const App = () => {
         <Route path="/create">
           <Create />
         </Route>
-        <Route path="/">
+        <Route exact path="/">
           <Home />
+        </Route>
+        <Route>
+          <NotFound />
         </Route>
       </Switch>
     </Router>
