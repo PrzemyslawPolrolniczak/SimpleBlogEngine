@@ -1,16 +1,16 @@
-import { createTheme } from '@mui/material';
+import { createTheme } from "@mui/material";
 
-import fonts from './fonts.css';
+import fonts from "./fonts.css";
 
 export const theme = createTheme({
-    typography: {
-        fontFamily: 'Roboto, Arial',
+  typography: {
+    fontFamily: "Roboto, Arial",
+  },
+  components: {
+    MuiCssBaseline: {
+      styleOverrides: `
+        ${fonts}
+      `,
     },
-    components: {
-        MuiCssBaseline: {
-            styleOverrides: `
-                ${fonts}
-            `,
-        },
-    },
+  },
 });

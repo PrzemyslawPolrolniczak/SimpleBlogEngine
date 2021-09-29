@@ -10,27 +10,20 @@ import {
   Typography,
 } from "@mui/material";
 
-import { LikeIndicator, CommentsIndicator } from "..";
+import { CommentsIndicator } from "..";
 
 import * as S from "./styles";
 
-export const BlogPostTile = ({
-  id = 0,
+export const BlogpostTile = ({
+  id,
   image,
   title,
   description,
   commentsAmount = 0,
   rating = 0,
   userRatingValue,
-  hasBeenLiked,
 }) => {
-  const [isLiked, setIsLiked] = React.useState(hasBeenLiked);
   const [userRating, setUserRating] = React.useState(userRatingValue);
-
-  const handleLikeClick = () => {
-    setIsLiked(!isLiked);
-    console.log("like click");
-  };
 
   const handleRatingClick = (_, newValue) => {
     setUserRating(newValue);
@@ -56,13 +49,12 @@ export const BlogPostTile = ({
         <S.BottomContentWrapper>
           <S.Informations>
             <Rating
-              name="simple-controlled"
+              readOnly
               value={userRating || rating}
               precision={0.5}
               onChange={handleRatingClick}
             />
             <CommentsIndicator commentsAmount={commentsAmount} />
-            <LikeIndicator isLiked={isLiked} onClick={handleLikeClick} />
           </S.Informations>
           <Link to={`blogpost/${id}`}>
             <Button size="small">Read more</Button>
