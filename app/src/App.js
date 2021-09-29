@@ -1,13 +1,9 @@
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-} from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { CssBaseline, ThemeProvider } from "@mui/material";
 
 import { theme } from "./styles/theme";
 
-import { Create, Home, NotFound } from './pages';
+import { Create, Home, NotFound } from "./pages";
 
 export const App = () => {
   return (
@@ -29,5 +25,5 @@ export const App = () => {
         </Router>
       </main>
     </ThemeProvider>
-  )
-}
+  );
+};
