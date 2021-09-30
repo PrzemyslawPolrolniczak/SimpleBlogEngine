@@ -8,7 +8,9 @@ import {
   CardContent,
   Rating,
   Typography,
+  IconButton,
 } from "@mui/material";
+import { Delete } from "@mui/icons-material";
 
 import { CommentsIndicator } from "..";
 
@@ -21,14 +23,9 @@ export const BlogpostTile = ({
   description,
   commentsAmount = 0,
   rating = 0,
-  userRatingValue,
+  isCreatedByUser,
+  onDeleteClick,
 }) => {
-  const [userRating, setUserRating] = React.useState(userRatingValue);
-
-  const handleRatingClick = (_, newValue) => {
-    setUserRating(newValue);
-  };
-
   return (
     <Box my={2}>
       <Card>
@@ -48,17 +45,19 @@ export const BlogpostTile = ({
 
         <S.BottomContentWrapper>
           <S.Informations>
-            <Rating
-              readOnly
-              value={userRating || rating}
-              precision={0.5}
-              onChange={handleRatingClick}
-            />
+            <Rating readOnly value={rating} precision={0.5} />
             <CommentsIndicator commentsAmount={commentsAmount} />
           </S.Informations>
-          <Link to={`blogpost/${id}`}>
-            <Button size="small">Read more</Button>
-          </Link>
+          <Box>
+            {isCreatedByUser && (
+              <IconButton onClick={() => onDeleteClick(id)}>
+                <Delete color="error" />
+              </IconButton>
+            )}
+            <Link to={`blogpost/${id}`}>
+              <Button size="small">Read more</Button>
+            </Link>
+          </Box>
         </S.BottomContentWrapper>
       </Card>
     </Box>

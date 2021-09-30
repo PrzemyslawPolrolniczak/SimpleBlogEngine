@@ -64,6 +64,17 @@ export const AppContextProvider = ({ children }) => {
     }));
   };
 
+  const archiveBlogpost = async (blogpostId) => {
+    await simulateVoidApiCall();
+
+    setContextValues((prevState) => ({
+      ...prevState,
+      blogposts: [
+        ...prevState.blogposts.filter((blogpost) => blogpost.id !== blogpostId),
+      ],
+    }));
+  };
+
   return (
     <AppContext.Provider
       value={{
@@ -72,6 +83,7 @@ export const AppContextProvider = ({ children }) => {
         addBlogpostComment,
         removeBlogpostComment,
         createBlogpost,
+        archiveBlogpost,
       }}
     >
       {children}

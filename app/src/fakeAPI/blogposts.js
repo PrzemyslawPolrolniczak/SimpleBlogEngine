@@ -16,7 +16,6 @@ export const fakeBlogposts = [
       },
       { id: 2, author: "Joanna", text: "I loved it.", userRating: 5 },
     ],
-    isMadeByUser: false,
   },
   {
     id: 1,
@@ -40,7 +39,6 @@ export const fakeBlogposts = [
         userRating: 5,
       },
     ],
-    isMadeByUser: false,
   },
   {
     id: 2,
@@ -54,6 +52,5 @@ export const fakeBlogposts = [
       { id: 1, author: "Jamie", text: "Really?!", userRating: 1 },
       { id: 2, author: "Joanna", text: "I hate it", userRating: 1 },
     ],
-    isMadeByUser: false,
   },
 ];

@@ -1,6 +1,12 @@
 import React from "react";
 import { useParams, Link } from "react-router-dom";
-import { Box, Button, Container, IconButton } from "@mui/material";
+import {
+  Box,
+  Button,
+  Container,
+  IconButton,
+  useMediaQuery,
+} from "@mui/material";
 import { AddComment } from "@mui/icons-material";
 
 import { Blogpost, PageLoader, CommentForm } from "../../components";
@@ -21,6 +27,8 @@ export const BlogpostView = () => {
   const [isSubmitting, setIsSubmitting] = React.useState(false);
   const { id: stringId } = useParams();
   const id = Number(stringId);
+
+  const shouldRenderSmallerFont = useMediaQuery("(max-width:600px)");
 
   const fetchBlogpostData = async () => {
     if (blogposts.length) {
@@ -88,7 +96,10 @@ export const BlogpostView = () => {
 
   return (
     <Container maxWidth="lg">
-      <Blogpost {...blogpostData} />
+      <Blogpost
+        shouldRenderSmallerFont={shouldRenderSmallerFont}
+        {...blogpostData}
+      />
       <Box>
         {blogpostData.comments.map(({ id, ...props }) => (
           <Comment
