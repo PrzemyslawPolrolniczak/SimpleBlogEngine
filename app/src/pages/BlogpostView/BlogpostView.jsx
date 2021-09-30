@@ -1,6 +1,6 @@
 import React from "react";
-import { useParams } from "react-router-dom";
-import { Box, Container, IconButton } from "@mui/material";
+import { useParams, Link } from "react-router-dom";
+import { Box, Button, Container, IconButton } from "@mui/material";
 import { AddComment } from "@mui/icons-material";
 
 import { Blogpost, PageLoader, CommentForm } from "../../components";
@@ -24,9 +24,7 @@ export const BlogpostView = () => {
 
   const fetchBlogpostData = async () => {
     if (blogposts.length) {
-      console.log({ blogposts });
       setBlogpostData(blogposts.find((blogpost) => blogpost.id === id));
-
       return;
     }
 
@@ -101,13 +99,16 @@ export const BlogpostView = () => {
           />
         ))}
       </Box>
-      <Box>
+      <Box mt={3} sx={{ display: "flex", justifyContent: "space-between" }}>
         <IconButton onClick={handleCommentIconClick}>
           <AddComment
             color={isCommenting ? "primary" : "inherit"}
             size="large"
           />
         </IconButton>
+        <Link to="/">
+          <Button>Go back</Button>
+        </Link>
       </Box>
 
       <Box mb={3}>

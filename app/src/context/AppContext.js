@@ -5,7 +5,6 @@ export const AppContext = React.createContext(null);
 const defaultContext = {
   blogposts: [],
   fetchBlogposts: async () => {},
-  getBlogpostById: async (id) => {},
   createBlogpost: async () => {},
   archiveBlogpost: async (id) => {},
   addBlogpostComment: async (comment, id) => {},
@@ -56,6 +55,15 @@ export const AppContextProvider = ({ children }) => {
     }));
   };
 
+  const createBlogpost = async (blogpostData) => {
+    await simulateVoidApiCall();
+
+    setContextValues((prevState) => ({
+      ...prevState,
+      blogposts: [blogpostData, ...prevState.blogposts],
+    }));
+  };
+
   return (
     <AppContext.Provider
       value={{
@@ -63,6 +71,7 @@ export const AppContextProvider = ({ children }) => {
         fetchBlogposts,
         addBlogpostComment,
         removeBlogpostComment,
+        createBlogpost,
       }}
     >
       {children}
